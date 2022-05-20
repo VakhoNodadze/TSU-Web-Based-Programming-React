@@ -5,7 +5,7 @@ import { useStore } from '../store/StoreContext'
 
 
 const Header = () => {
-  const { cart } = useStore()
+  const { state: { cart } } = useStore()
 
   console.log('context')
   return (

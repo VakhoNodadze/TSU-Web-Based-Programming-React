@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 
 import { useStore } from '../store/StoreContext'
+import { handleAddProduct } from '../store/actions'
 
 const Products = () => {
 
-  const { products, isLoading, handleAddProduct } = useStore()
+  const { state: { products, isLoading }, dispatch } = useStore()
 
-  console.log('products context')
     
   const renderData = () => (
     <div>
@@ -21,8 +21,9 @@ const Products = () => {
               <Product key={product.id} product={product} />
             </Link>
             <button className='p-2 mt-4 ml-10 text-white bg-blue-400'
-              onClick={() => handleAddProduct(product)}
-            >Add to Cart
+              onClick={() => dispatch(handleAddProduct(product))}
+            >
+              Add to Cart
             </button>
           </div>
         )

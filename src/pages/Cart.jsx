@@ -3,7 +3,7 @@ import { useStore } from '../store/StoreContext'
 
 const Cart = () => {
 
-  const { cart } = useStore()
+  const { state: { cart } } = useStore()
 
   const renderData = () => (
     <>
