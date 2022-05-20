@@ -1,24 +1,25 @@
 import Product from '../components/Product'
-import Loader from '../components/Loader/Loader'
+import { useStore } from '../store/StoreContext'
 
-const Cart = ({ products }) => {
+const Cart = () => {
+
+  const { cart } = useStore()
 
   const renderData = () => (
     <>
       {
-        products.map((product) => 
-          <div className='w-1/2'>
+        cart.map((product) => 
+          <div className='w-1/2' key={product.id}>
             <Product key={product.id} product={product} />
           </div>
         )}
     </>
   )
 
-  console.log('products', products)
     
   const renderContent = () => (
     <>
-      {products.length === 0 ? <p className='mt-10'>Cart is empty</p>: renderData()}
+      {cart.length === 0 ? <p className='mt-10'>Cart is empty</p>: renderData()}
     </>
   )
   return (

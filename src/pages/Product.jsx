@@ -13,6 +13,7 @@ class Product extends Component {
       product: {}
     }
   }
+  
 
 
   componentDidMount(){
